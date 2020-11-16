@@ -1,0 +1,44 @@
+#include <iostream> 
+using namespace std; 
+ 
+ 
+const int SIZE =5;
+main()
+{    
+	int data[SIZE]={0,1,2,3,4};
+	int *p = &data[0];       
+	cout << "p[0]   = " << p[0] << endl;     
+	cout << "*p     = " << *p << endl;     
+	cout << "*(p+0) = " << *(p+0) << endl;     
+	cout << "*(p+1) = " << *(p+1) << endl;     
+	cout << "*(p+2) = " << *(p+2) << endl;     
+	cout << "*p++   = " << *p++ << endl;     
+	cout << "*p++   = " << *p++ << endl; 
+	
+	for (int i=0; i<SIZE; i++){
+		cout<< data[i]<< "\t";
+    }
+    cout<<endl;
+    
+    p= &data[0];
+    for( int i=0; i<SIZE; i++){
+    	cout<<*p++<< "\t";
+	}
+	
+} 
+
+/*
+exercise 1
+1. What is *p = &data[0]; 
+	=0
+2. Is p[0] and *p are similar output? Why?
+	yes the similiar output because the *p still point same to the address that still 
+	not has been added.
+3. What are *(p+0), *(p+1) and *(p+3)?
+	*(p+0) 0, *(p+1) = 1 and *(p+3) = 3
+4. What is *p++? 
+	= 1
+5. Write for loop to output the content of the array data using standard subscript to refer to array elements. 
+6. Write for loop to output the content of the array data using pointer to refer to array elements. Remember to restart the pointer to point to first element in the array before the while loop. 
+
+*/
