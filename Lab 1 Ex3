@@ -1,0 +1,75 @@
+#include <iostream> 
+using namespace std; 
+ 
+void ChangeIt_1(int n) 
+{    n = 5;   
+	}                            
+ 
+void ChangeIt_2(int *n) 
+{      *n = 6;    
+	}                            
+ 
+void ChangeIt_3(int &n) 
+{      n = 7;  
+	}                            
+ 
+int ChangeIt_4(int n) 
+{      n = 8;   
+	return n; 
+	} 
+	
+void swap (int &n, int *m)
+{
+	if (n>*m)
+	{
+		int temp = n;
+		n = *m;
+		*m = temp;
+	}
+	cout<<"x; "<< n << endl;
+	cout << "y: "<<*m<<endl;
+} 
+double getAverage (int *array, int SIZE )
+{
+	double total, average;
+	for (int i=0;i<SIZE;i++)
+	{
+		total = total + *array;
+		*array++;
+	}
+	average = total / 5;
+	return average;
+}
+ 
+const int SIZE =5;
+main()
+{     
+	int *p;     //declare p as pointer     
+	int x=10, y=7; int data [SIZE]={1,3,2,5,4};     
+	p=&x;       //reference of x   
+	       
+	ChangeIt_1(x);      
+	cout << "ChangeIt_1  : " << *p << endl; 
+	         
+	ChangeIt_2(&x);     
+	cout << "ChangeIt_2  : " << *p << endl;    
+	      
+	ChangeIt_3(x);     
+	cout << "ChangeIt_3  : " << *p << endl; 
+	         
+	x = ChangeIt_4(x);     
+	cout << "ChangeIt_4  : " << *p << endl; 
+} 
+
+
+/*
+1. Why call to function ChangeIt_1(n) will not change x in main()? 
+	because the one that is declare as a pointer is not x but p
+2. Why parameter n in ChangeIt_2(int *n) is a pointer, and statement in the function is *n = 6?  
+     
+3. Create a function called void swap with two parameters, which will receive the address of x and y as pointer. 
+The function should swap the value of x and y only if x is larger than y. 
+Print the value of x and y after the function call. 
+4. Create a function called double getAverage(int *array, int SIZE), where it accept the array as pointer, and return the average of the array. 
+Print the returned value from this function. Always use *array rather than subscript to access the array value. 
+*/
