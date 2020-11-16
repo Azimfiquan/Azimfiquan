@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+const int SIZE =5;
+main(){
+	int data[SIZE]={1,3,2,5,4};
+	int total =0, *p;
+	
+	p=data;
+	
+	cout<<*p++<<endl;
+	cout<<*++p<<endl;
+	cout<<*p--<<endl;
+	cout<<*--p<<endl;
+	
+	p = &data[SIZE-1];
+	int n=0;
+	while (n!=5){
+		cout<< *p-n;
+		n++;
+	}
+
+    p = data;
+    total = 0;
+    for (int i=0; i<SIZE; i++){
+		total += *p++;
+    }
+    
+    cout<<"Total : "<<total<<endl;
+}
+
+/*
+1. Write a while loop to output the content of the array data using pointer to refer to array elements starting from last array element. 
+2. Write for loop to output the total sum of the array values using pointer. Remember to restart the pointer to point to first element in the array before the while loop.
+*/ 
