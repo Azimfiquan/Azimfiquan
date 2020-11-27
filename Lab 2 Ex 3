@@ -1,0 +1,67 @@
+#include<iostream>
+#include "part3.h"
+
+using namespace std;
+
+Recipe::Recipe(){
+    head = NULL;
+    cur = NULL;
+    tmp = NULL;
+}
+
+void Recipe::addNode(int addBil, std::string addItems, double addPrice){
+    rec *newNode = new rec;
+    newNode->next = NULL;
+    newNode->bil = addBil;
+    newNode->items = addItems;
+    newNode->price = addPrice;
+
+    if(head != NULL){
+        cur = head;
+        while(cur->next != NULL){
+            cur = cur->next;
+        }
+        cur->next = newNode;
+    }
+    else{
+        head = newNode;
+    }
+}
+
+double Recipe::total(){
+    double sum;
+    rec *cur = head;
+    while(cur != NULL){
+        sum = sum + cur->price;
+        cur = cur->next;
+    }
+    return sum;
+}
+
+void Recipe::print(){
+
+    cout << "BC" << "   Items" << "                     Price" << endl;
+    cout << "====================================\n";
+    cur = head;
+    while(cur != NULL){
+        cout << cur->bil << "   " << cur->items << "    " << cur->price << endl;
+        cur = cur->next;
+    }
+    cout << "------------------------------------\n";
+    cout << "Total(GST Incl.)               " << total() << endl;
+
+}
+
+int main(){
+
+    Recipe price;
+    price.addNode(10, "Pagoda Gnut 110g      ", 3.49);
+    price.addNode(11, "Hup Seng Cream Cracker", 4.19);
+    price.addNode(12, "Yit Poh 2N1 Kopi-O    ", 7.28);
+    price.addNode(13, "Zoelife SN & Seed     ", 5.24);
+    price.addNode(14, "Gatsby S/FO Wet&Hard ", 16.99);
+    price.addNode(15, "GB W/G U/Hold 150g    ", 6.49);
+    price.print();
+
+    return 0;
+}
