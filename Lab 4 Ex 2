@@ -1,0 +1,82 @@
+class Queue 
+{ 
+int front, rear, size; 
+int  max_size; 
+int myqueue[]; 
+ 
+public Queue(int max_size) { 
+this.max_size = max_size; 
+front = this.size = 0;  
+rear = max_size - 1; 
+myqueue = new int[this.max_size]; 
+             
+    } 
+        
+    //if size = max_size , queue is full  
+boolean isFull(Queue queue) 
+{  return (queue.size == queue.max_size); 
+    } 
+        
+    // size = 0, queue is empty 
+boolean isEmpty(Queue queue) 
+{  return (queue.size == 0); } 
+        
+    // enqueue - add an element to the queue 
+void enqueue( int item) 
+    { 
+if (isFull(this)) 
+return; 
+this.rear = (this.rear + 1)%this.max_size; 
+this.myqueue[this.rear] = item; 
+this.size = this.size + 1; 
+System.out.print(item + " " ); 
+    } 
+    // dequeue - remove an elment from the queue
+int dequeue() 
+    { 
+if (isEmpty(this)) 
+return Integer.MIN_VALUE; 
+            
+int item = this.myqueue[this.front]; 
+this.front = (this.front + 1)%this.max_size; 
+this.size = this.size - 1; 
+        return item; 
+    } 
+        
+    // move to front of the queue 
+int front() 
+    { 
+if (isEmpty(this)) 
+return Integer.MIN_VALUE; 
+            
+return this.myqueue[this.front]; 
+    } 
+         
+    // move to the rear of the queue
+int rear() 
+    { 
+if (isEmpty(this)) 
+return Integer.MIN_VALUE; 
+            
+return this.myqueue[this.rear]; 
+    } 
+} 
+    
+// main class 
+class Main 
+{     
+public static void main(String[] args)  
+    { 
+        Queue queue = new Queue(1000); 
+             
+System.out.println("Queue created as:");
+queue.enqueue(10); 
+queue.enqueue(20); 
+queue.enqueue(30); 
+queue.enqueue(40); 
+         
+System.out.println("\nElement " + queue.dequeue() +    " dequeued from queue\n"); 
+System.out.println("Front item is " +    queue.front()); 
+System.out.println("Rear item is " +     queue.rear()); 
+    } 
+}
